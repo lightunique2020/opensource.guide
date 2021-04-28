@@ -1,0 +1,23 @@
+version: 2
+registries:
+  npm-registry-npm-git:
+    type: npm-registry
+    url: https://Npm.git
+    username: "${{secrets.NPM_REGISTRY_NPM_GIT_USERNAME}}"
+    password: "${{secrets.NPM_REGISTRY_NPM_GIT_PASSWORD}}"
+
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  registries:
+  - npm-registry-npm-git
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
